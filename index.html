@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>솔라젠 | 옥상·지붕 임대 | 총 8,000만 원 지급</title>
+  <meta name="description" content="놀고 있는 옥상·지붕, 그냥 두지 마세요. 빌려주시면 총 8,000만 원 드립니다. 설치·유지·철거비 0원, 관리 부담 0원." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2e;
+      --card2:#101f38;
+      --text:#eaf0ff;
+      --muted:#b9c6e5;
+      --accent:#4ade80;
+      --accent2:#22d3ee;
+      --danger:#fb7185;
+      --line:rgba(255,255,255,.12);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Apple SD Gothic Neo","Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 15%, rgba(74,222,128,.16), transparent 60%),
+        radial-gradient(900px 700px at 40% 100%, rgba(251,113,133,.12), transparent 60%),
+        linear-gradient(180deg, #070b14, var(--bg) 40%, #060a12);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:10px 0 6px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.3px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(34,211,238,.9), rgba(74,222,128,.9));
+      box-shadow: 0 12px 30px rgba(34,211,238,.15);
+      display:grid; place-items:center;
+      color:#05101a; font-weight:900;
+    }
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+      color:var(--muted); font-weight:600; font-size:14px;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px; border-radius:999px; border:1px solid transparent;
+    }
+    .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.04)}
+    .cta{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      transition: transform .08s ease, background .2s ease;
+      white-space:nowrap;
+      color: inherit;
+      cursor:pointer;
+    }
+    .btn:hover{background:rgba(255,255,255,.07)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(34,211,238,.95), rgba(74,222,128,.95));
+      color:#041018;
+      box-shadow: 0 18px 45px rgba(34,211,238,.16);
+    }
+    .btn.danger{
+      border-color: rgba(251,113,133,.35);
+      background: rgba(251,113,133,.10);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:14px;
+      padding:28px;
+      border-radius: calc(var(--radius) + 6px);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 220px at 30% 0%, rgba(34,211,238,.22), transparent 60%),
+        radial-gradient(600px 260px at 85% 30%, rgba(74,222,128,.18), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero > *{position:relative}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+      letter-spacing:-.2px;
+    }
+    .badge b{color:var(--text)}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      letter-spacing:-1.2px;
+      line-height:1.1;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size: clamp(15px, 2.2vw, 18px);
+      max-width: 64ch;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr; }
+    }
+
+    .price-card{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(16,31,56,.82), rgba(15,26,46,.76));
+      padding:18px;
+    }
+    .price{
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing:-1px;
+      margin:4px 0 0;
+    }
+    .price small{
+      font-size:14px; font-weight:800; color:var(--muted);
+      display:block; margin-top:6px;
+    }
+    .mini{
+      margin-top:12px;
+      display:grid; gap:10px;
+    }
+    .mini .row{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      color:var(--muted);
+      font-weight:700;
+    }
+    .mini .row b{color:var(--text)}
+    .hero-actions{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+    }
+
+    /* Sections */
+    section{padding:26px 0}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size: 20px;
+      letter-spacing:-.5px;
+    }
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      font-weight:800;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .kpi{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 720px){ .kpi{grid-template-columns:1fr} }
+    .kpi .item{
+      padding:14px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .kpi .item .v{
+      font-size: 22px; font-weight:900; letter-spacing:-.6px;
+      margin-top:6px;
+    }
+    .kpi .item .t{color:var(--muted); font-weight:800}
+
+    .timeline{
+      display:grid; gap:10px; margin-top:12px;
+    }
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px 12px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .dot{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      font-weight:900;
+      background: rgba(34,211,238,.18);
+      border:1px solid rgba(34,211,238,.35);
+      color: var(--text);
+      flex: 0 0 auto;
+    }
+    .step b{display:block; margin-bottom:2px}
+    .step p{margin:0; color:var(--muted); font-weight:700}
+
+    .list{
+      display:grid; gap:10px; margin:10px 0 0;
+      padding:0; list-style:none;
+    }
+    .list li{
+      padding:12px 12px;
+      border-radius: var(--radius2);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:750;
+    }
+    .list li b{color:var(--text)}
+    .trust{
+      background: linear-gradient(135deg, rgba(74,222,128,.13), rgba(34,211,238,.10));
+      border-color: rgba(74,222,128,.22);
+    }
+    .trust h2{margin-bottom:8px}
+    .trust .big{
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing:-.6px;
+      line-height:1.25;
+      margin:0;
+    }
+    .footer{
+      padding:18px 0 34px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+      margin-top:16px;
+    }
+    .fine{
+      margin-top:10px;
+      color: rgba(185,198,229,.85);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    /* Form */
+    .form{
+      display:grid; gap:10px; margin-top:12px;
+    }
+    label{font-weight:800; font-size:13px; color:var(--muted)}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(10,16,28,.55);
+      color: var(--text);
+      outline:none;
+      font-weight:700;
+    }
+    textarea{min-height:96px; resize:vertical}
+    .form-row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width: 720px){ .form-row{grid-template-columns:1fr} }
+    .help{
+      font-size:12px; color: rgba(185,198,229,.9); margin-top:4px;
+    }
+
+    /* Modal helpers (optional small polish) */
+    .modal-open { overflow:hidden; }
+
+    /* Approval List */
+    .approval-container {
+        background: rgba(255,255,255,.03);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        margin-top: 14px;
+    }
+    .approval-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+    .approval-header .icon {
+        font-size: 20px;
+    }
+    .approval-header h2 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -.5px;
+    }
+    .approval-list-wrapper {
+        height: 180px; /* Adjust height to show about 5 items */
+        overflow: hidden;
+        position: relative;
+    }
+    .approval-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        transition: transform 1s linear; /* Added for smooth scrolling */
+    }
+    .approval-list li {
+        padding: 6px 0;
+        color: var(--muted);
+        font-weight: 700;
+        border-bottom: 1px solid var(--line);
+        line-height: 1.5; /* Ensure consistent height */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand" onclick="location.reload()" style="cursor: pointer;">
+        <div class="logo">☀</div>
+        <div>
+          <div style="font-size:14px; color:var(--muted); font-weight:800;">솔라젠 | 태양광 옥상·지붕 임대</div>
+          <div style="font-size:16px; font-weight:950; letter-spacing:-.4px;">건물주 수익화 랜딩</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <nav class="nav" aria-label="섹션 이동">
+          <a href="#structure">수익 구조</a>
+          <a href="#payment">지급 방식</a>
+          <a href="#who">추천 대상</a>
+          <a href="#referral">소개 리워드</a>
+        </nav>
+        <a class="btn primary" href="#contact">무료 상담/문의</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="badge">✅ 메인 카피 · <b>히어로 영역</b></div>
+          <h1>
+            놀고 있는 옥상·지붕,<br />
+            그냥 두지 마세요<br />
+            <span style="color:var(--accent2)">👉 빌려주시면</span>
+            <span style="color:var(--accent)">최대 수억 원까지</span> 드립니다
+          </h1>
+          <p class="lead">
+            건물주님은 <b>아무 비용 없이</b><br />
+            저희는 <b>태양광 설치 + 관리까지 전부</b> 진행합니다.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">지금 조건 확인하기</a>
+            <a class="btn danger" href="#referral">소개 리워드 받기</a>
+            <a class="btn" href="#payment">돈 지급 방식 보기</a>
+          </div>
+
+          <p class="help" style="margin-top:10px;">
+            “시간은 금인데 옥상은 놀고 있죠.” 딱 그 케이스 잡아드립니다.
+          </p>
+        </div>
+
+        <aside class="price-card" aria-label="핵심 요약">
+          <div class="pill">150평 ~ 200평 기준 요약</div>
+          <div class="price">최소 8,000만 원<small>계약 기간 20년 · 설치/관리/철거비 0원</small></div>
+
+          <div class="mini">
+            <div class="row"><span>평균 발전량</span> <b>월 약 100kW</b></div>
+            <div class="row"><span>계약 즉시</span> <b>선지급 2,000만 원</b></div>
+            <div class="row"><span>6년 차부터</span> <b>매달 약 40만 원</b></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- APPROVALS -->
+    <section id="approvals">
+        <div class="approval-container">
+            <div class="approval-header">
+                <div class="icon">📈</div>
+                <h2>실시간 승인 내역</h2>
+            </div>
+            <div class="approval-list-wrapper">
+                <ul id="approval-list" class="approval-list"></ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRUCTURE -->
+    <section id="structure">
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <h2>✅ 수익 구조 (200평 기준)</h2>
+          <p class="muted">
+            복잡한 설명 없이, 숫자로 딱 정리합니다. (중요한 건 “내 통장에 얼마 들어오냐”죠.)
+          </p>
+
+          <div class="kpi">
+            <div class="item">
+              <div class="t">평균 발전량</div>
+              <div class="v">월 약 100kW</div>
+            </div>
+            <div class="item">
+              <div class="t">계약 기간</div>
+              <div class="v">20년</div>
+            </div>
+            <div class="item">
+              <div class="t">총 지급 금액</div>
+              <div class="v">최소 8,000만 원</div>
+            </div>
+          </div>
+
+          <div class="fine">
+            * 실제 지급 조건은 옥상/지붕 상태, 면적, 구조물, 접근성 등에 따라 달라질 수 있습니다.
+          </div>
+        </div>
+
+        <div class="card" style="grid-column: span 5;">
+          <h2>✅ 한 줄 설명</h2>
+          <p class="muted" style="margin:0;">
+            건물주님은 <b style="color:var(--text)">아무 비용 없이</b><br />
+            저희는 <b style="color:var(--text)">태양광 설치 + 관리까지 전부</b> 진행합니다.
+          </p>
+
+          <ul class="list" style="margin-top:14px;">
+            <li>✔ “내가 할 일”은 <b>공간만 빌려주는 것</b></li>
+            <li>✔ “귀찮은 일”은 <b>전부 저희가</b></li>
+            <li>✔ “돈”은 <b>약속된 방식대로</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT -->
+    <section id="payment">
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <h2>✅ 돈은 이렇게 드립니다 (중요)</h2>
+          <p class="muted">“일단 설치하고 나중에…” 이런 거 싫죠. 그래서 구조를 투명하게 공개합니다.</p>
+
+          <div class="timeline">
+            <div class="step">
+              <div class="dot">1</div>
+              <div>
+                <b>계약 즉시 → 선지급 2,000만 원</b>
+                <p>5년치 미리 지급 (스타트부터 현금 흐름 확보)</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="dot">2</div>
+              <div>
+                <b>6년 차부터 → 남은 6,000만 원을 14년 분할 지급</b>
+                <p>매달 약 40만 원 입금</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="dot" style="background:rgba(74,222,128,.18); border-color:rgba(74,222,128,.35);">✓</div>
+              <div>
+                <b>연체 없음 / 관리 부담 없음</b>
+                <p>돈 받을 때 스트레스까지 같이 줄여드립니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card trust" style="grid-column: span 5;">
+          <h2>🔥 진짜 중요한 한 문장 (신뢰용)</h2>
+          <p class="big">
+            설치비, 유지비, 철거비까지 전부 저희 부담<br />
+            건물주님이 부담할 비용은 <span style="color:var(--accent)">0원</span>입니다.
+          </p>
+          <div class="fine">
+            * 계약/현장 조건에 따라 세부 조항은 협의될 수 있으며, 최종 조건은 계약서로 확정됩니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section id="who">
+      <div class="grid">
+        <div class="card" style="grid-column: span 6;">
+          <h2>✅ 이런 분들께 딱입니다</h2>
+          <ul class="list">
+            <li><b>사용 안 하는 옥상·지붕</b>이 있는 건물주</li>
+            <li>건물에 손 안 대고 <b>수익 만들고 싶은</b> 분</li>
+            <li><b>유지·관리 귀찮은 거</b> 전부 싫은 분</li>
+          </ul>
+        </div>
+
+        <div class="card" style="grid-column: span 6;">
+          <h2>“내 건물도 되나?” 빠른 체크</h2>
+          <p class="muted" style="margin-top:0;">
+            아래 3개만 대충 답 주셔도, 가능 여부 1차로 바로 봐드릴 수 있어요.
+          </p>
+          <ul class="list">
+            <li>1) 대략 면적: <b>약 몇 평?</b></li>
+            <li>2) 형태: <b>옥상 / 지붕(슬라브/징크 등)</b></li>
+            <li>3) 위치: <b>시/구 정도</b></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERRAL -->
+    <section id="referral">
+      <div class="grid">
+        <div class="card" style="grid-column: span 7;">
+          <h2>✅ 소개만 해줘도 돈 됩니다</h2>
+          <p class="muted">
+            건물주를 소개해주시면 <b style="color:var(--text)">200평 기준 즉시 400만 원 지급</b><br />
+            (계약만 되면 바로)
+          </p>
+
+          <ul class="list">
+            <li>✔ 지인 건물주에게 “옥상 놀고 있냐” 한 마디면 끝</li>
+            <li>✔ 계약 성사 시 <b>즉시 지급</b> (질질 끄는 거 없음)</li>
+            <li>✔ 소개자는 설치/관리/민원 대응 <b>관여 없음</b></li>
+          </ul>
+        </div>
+
+        <div class="card" style="grid-column: span 5;" id="contact">
+          <h2>무료 상담/문의</h2>
+          <p class="muted" style="margin-top:0;">
+            연락처/내용 남기면, 확인 후 회신드리는 형태로 쓰시면 됩니다.
+            (지금은 데모 폼이라 전송은 안 돼요.)
+          </p>
+
+          <form class="form" action="https://formspree.io/f/xjgooqqr" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="name">이름/회사</label>
+                <input id="name" name="이름_회사" placeholder="예: 홍길동 / OO빌딩" />
+              </div>
+              <div>
+                <label for="phone">연락처</label>
+                <input id="phone" name="연락처" placeholder="예: 010-1234-5678" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="area">면적(평)</label>
+                <input id="area" name="면적_평" placeholder="예: 200" />
+              </div>
+              <div>
+                <label for="type">형태</label>
+                <select id="type" name="형태">
+                  <option value="">선택</option>
+                  <option>옥상</option>
+                  <option>지붕</option>
+                  <option>둘 다 가능</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="msg">문의 내용</label>
+              <textarea id="msg" name="문의_내용" placeholder="예: 위치(시/구), 옥상 상태, 언제 통화 가능 등"></textarea>
+              <div class="help">팁: “대략 위치 + 면적 + 형태”만 있어도 1차 견적/가능여부 판단이 빨라요.</div>
+            </div>
+
+            <button class="btn primary" type="submit" style="width:100%;">상담 요청 남기기</button>
+            <a href="tel:1668-2494" class="btn" style="width:100%; margin-top: 10px;">바로문의하기</a>
+            <div class="fine">
+              * 개인정보는 상담 목적 외 사용하지 않는다는 문구를 실제 운영 시 추가 권장합니다.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (UPDATED) -->
+    <footer class="footer">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <b style="color:var(--text)">옥상·지붕 임대 태양광</b><br />
+          <span class="muted">빌려주시면 최소 8,000만 원 · 비용 0원 · 관리 0원</span>
+        </div>
+
+        <div class="muted" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <a href="#top" style="text-decoration:none;">맨 위로 ↑</a>
+          <span style="opacity:.5;">|</span>
+          <a href="#" id="openPrivacy" style="text-decoration:none;">개인정보처리방침</a>
+        </div>
+      </div>
+
+      <div class="fine" style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
+        ©주식회사 시어스트릿<br />
+        대표: 조정연<br />
+        법인 등록번호: 131111-0078395<br />
+        사업관련 문의: <a href="tel:1668-2494" style="text-decoration:none;">1668-2494</a><br />
+        본사: 경기도 성남시 분당구 운중로 124, 8층 804호 씨-73
+      </div>
+
+      <div class="fine">
+        본 페이지의 수치/조건은 “200평 기준 예시”이며, 현장 조건 및 계약 내용에 따라 달라질 수 있습니다.
+      </div>
+    </footer>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div id="privacyModal" aria-hidden="true" style="
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+    padding:20px; background:rgba(0,0,0,.55); backdrop-filter: blur(6px);
+    z-index:9999;
+  ">
+    <div role="dialog" aria-modal="true" aria-labelledby="privacyTitle" style="
+      width:min(860px, 100%);
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(16,31,56,.92), rgba(15,26,46,.92));
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    ">
+      <div style="
+        display:flex; align-items:center; justify-content:space-between; gap:12px;
+        padding:16px 16px; border-bottom:1px solid rgba(255,255,255,.10);
+      ">
+        <div>
+          <div id="privacyTitle" style="font-weight:950; letter-spacing:-.4px;">개인정보처리방침</div>
+          <div style="color:rgba(185,198,229,.9); font-size:12px; font-weight:700; margin-top:2px;">
+            개인정보 수집 및 이용 안내
+          </div>
+        </div>
+
+        <button type="button" id="closePrivacy" class="btn" style="padding:10px 12px;">닫기</button>
+      </div>
+
+      <div style="padding:16px; max-height: 70vh; overflow:auto;">
+        <div style="color:var(--muted); font-weight:800; line-height:1.7;">
+          <b style="color:var(--text);">개인정보 수집 및 이용에 대한 안내</b><br /><br />
+          당사는 회원님의 개인정보를 매우 중요하게 생각하며, 아래와 같은 기준에 따라 최소한의 정보만을 수집·이용합니다.
+          H에너지는 문의 응대를 위해 필요한 범위 내의 개인정보만 수집하며, 수집된 정보는 관련 법령에 따라 안전하고 투명하게 관리됩니다.
+          입력해주신 개인정보는 문의하신 사항에 대한 답변 목적으로만 사용되며, 해당 목적이 달성되거나 법령에서 정한 보관기간이 경과한 경우 즉시 파기됩니다.
+          이에 개인정보 수집 및 이용에 대한 동의를 요청드립니다.
+          <br /><br />
+
+          <b style="color:var(--text);">개인정보의 수집·이용 목적</b><br />
+          문의 내용에 대해 보다 정확하고 원활한 안내 및 답변을 제공하기 위함입니다.
+          <br /><br />
+
+          <b style="color:var(--text);">수집하는 개인정보 항목</b><br />
+          <b style="color:var(--text);">필수항목</b><br />
+          · 문의유형, 회사명, 담당자명, 연락처, 이메일 주소, 문의 제목 및 내용
+          <br /><br />
+          <b style="color:var(--text);">선택항목</b><br />
+          · 홈페이지 주소, 첨부파일
+          <br /><br />
+
+          <b style="color:var(--text);">개인정보 보유 및 이용 기간</b><br />
+          개인정보는 수집 및 이용 목적이 달성된 후 지체 없이 파기하는 것을 원칙으로 합니다.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+
+    // Privacy Modal
+    const openPrivacy = document.getElementById("openPrivacy");
+    const privacyModal = document.getElementById("privacyModal");
+    const closePrivacy = document.getElementById("closePrivacy");
+
+    function showPrivacy(){
+      privacyModal.style.display = "flex";
+      privacyModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+    }
+
+    function hidePrivacy(){
+      privacyModal.style.display = "none";
+      privacyModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+    }
+
+    openPrivacy?.addEventListener("click", (e) => {
+      e.preventDefault();
+      showPrivacy();
+    });
+
+    closePrivacy?.addEventListener("click", hidePrivacy);
+
+    // click outside to close
+    privacyModal?.addEventListener("click", (e) => {
+      if (e.target === privacyModal) hidePrivacy();
+    });
+
+    // ESC to close
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && privacyModal.style.display === "flex") hidePrivacy();
+    });
+
+    // Real-time Approval List
+    const approvalData = [
+        "김포 2500평 *준호 12억 승인완료", "원주 3200평 *민경 15억5천 승인완료", "청주 1800평 *상훈 8억9천 승인완료",
+        "화성 4500평 *지혜 22억 승인완료", "천안 2100평 *현우 10억 승인완료", "익산 1500평 *은지 7억2천 승인완료",
+        "고양 2800평 *동현 14억 승인완료", "진주 3500평 *나래 17억 승인완료", "아산 5000평 *태양 25억 승인완료",
+        "경주 1200평 *수민 6억 승인완료", "의왕 150평 *재희 9천만원 승인완료", "구리 200평 *성민 1억2천 승인완료",
+        "하남 300평 *윤아 1억8천 승인완료", "군포 250평 *정훈 1억5천 승인완료", "오산 180평 *보람 1억1천 승인완료",
+        "안산 220평 *진호 1억4천 승인완료", "시흥 160평 *미소 9천5백 승인완료", "의정부 190평 *건우 1억1천5백 승인완료",
+        "양주 230평 *혜진 1억3천5백 승인완료", "동두천 170평 *태호 1억 승인완료", "논산 150평 *화영 8천만원 승인완료",
+        "양재 300평 *미연 1억6천 승인완료", "평택 200평 *준호 1억1천 승인완료", "여주 180평 *영희 9천만원 승인완료",
+        "남양주 250평 *철수 1억4천 승인완료", "춘천 120평 *지민 7천만원 승인완료", "용인 350평 *서연 1억9천 승인완료",
+        "파주 220평 *민수 1억2천 승인완료", "포천 160평 *유진 8천5백 승인완료", "가평 140평 *도윤 7천5백 승인완료",
+        "강화 300평 *하은 1억6천 승인완료", "이천 210평 *성진 1억1천 승인완료", "안성 280평 *다인 1억5천 승인완료",
+        "광주 240평 *우진 1억3천 승인완료", "세종 190평 *소희 1억 승인완료"
+    ];
+
+    const approvalList = document.getElementById('approval-list');
+    let approvalIndex = 0;
+    const maxVisibleItems = 6; // Max items to keep in the list
+
+    // Populate initial items
+    function initializeApprovalList() {
+        // Clear any existing items to avoid duplicates on re-run
+        approvalList.innerHTML = '';
+        for (let i = 0; i < maxVisibleItems; i++) {
+            const listItem = document.createElement('li');
+            listItem.textContent = approvalData[(approvalIndex + i) % approvalData.length];
+            approvalList.appendChild(listItem);
+        }
+        approvalIndex = (approvalIndex + maxVisibleItems) % approvalData.length; // Update index
+    }
+
+    function smoothScrollApproval() {
+        const firstItem = approvalList.firstElementChild;
+        // Get actual height, including margin/padding/border
+        const itemFullHeight = firstItem.offsetHeight;
+
+        // Apply smooth scroll upwards
+        approvalList.style.transition = `transform 1s linear`;
+        approvalList.style.transform = `translateY(-${itemFullHeight}px)`;
+
+        // After the scroll animation, reset and move the first item to the end
+        setTimeout(() => {
+            // Remove transition for instant reset
+            approvalList.style.transition = 'none';
+            approvalList.style.transform = `translateY(0)`;
+
+            // Move the first item to the end and update its content
+            approvalList.appendChild(firstItem);
+            firstItem.textContent = approvalData[approvalIndex % approvalData.length];
+            approvalIndex++;
+        }, 1000); // Match transition duration (1s)
+    }
+
+    initializeApprovalList();
+    setInterval(smoothScrollApproval, 1500); // Every 1.5 seconds, start new scroll
+  </script>
+</body>
+</html>
