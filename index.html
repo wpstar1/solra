@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>솔라젠 | 옥상·지붕 임대 | 총 8,000만 원 지급</title>
-  <meta name="description" content="놀고 있는 옥상·지붕, 그냥 두지 마세요. 빌려주시면 총 8,000만 원 드립니다. 설치·유지·철거비 0원, 관리 부담 0원." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>솔라젠 | 태양광 옥상·지붕 임대 | 전문 태양광 솔루션 기업</title>
+  <meta name="description" content="놀고 있는 옥상·지붕, 전문 태양광 솔루션으로 수익화하세요. 안전하고 신뢰할 수 있는 태양광 임대 서비스. 설치·유지·철거비 0원, 관리 부담 0원." />
 
   <style>
     :root{
@@ -21,6 +21,13 @@
       --radius: 18px;
       --radius2: 14px;
       --max: 1080px;
+      --mobile-padding: 16px;
+      --tablet-padding: 20px;
+      --gradient1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --gradient5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
     }
 
     *{box-sizing:border-box}
@@ -37,277 +44,648 @@
     }
 
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:var(--mobile-padding);
+    }
+
     .topbar{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding:10px 0 6px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 0;
+      flex-wrap: wrap;
     }
+
     .brand{
-      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.3px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:800;
+      letter-spacing:-.3px;
+      flex-shrink: 0;
     }
+
     .logo{
-      width:38px; height:38px; border-radius:12px;
+      width:40px;
+      height:40px;
+      border-radius:10px;
       background: linear-gradient(135deg, rgba(34,211,238,.9), rgba(74,222,128,.9));
       box-shadow: 0 12px 30px rgba(34,211,238,.15);
-      display:grid; place-items:center;
-      color:#05101a; font-weight:900;
+      display:grid;
+      place-items:center;
+      color:#05101a;
+      font-weight:900;
+      font-size: 18px;
+      flex-shrink: 0;
     }
+
     .nav{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
-      color:var(--muted); font-weight:600; font-size:14px;
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      color:var(--muted);
+      font-weight:600;
+      font-size:12px;
+      flex-grow: 1;
+      margin: 0 10px;
     }
+
     .nav a{
       text-decoration:none;
-      padding:8px 10px; border-radius:999px; border:1px solid transparent;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid transparent;
+      white-space: nowrap;
     }
+
     .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.04)}
+
     .cta{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      flex-shrink: 0;
     }
+
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:12px 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      padding:10px 12px;
       border-radius:999px;
       text-decoration:none;
       font-weight:800;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
+      background:
+        radial-gradient(100px 50px at 50% 0%, rgba(255,255,255,.2), transparent 100%),
+        rgba(255,255,255,.04);
       transition: transform .08s ease, background .2s ease;
       white-space:nowrap;
       color: inherit;
       cursor:pointer;
+      font-size: 14px;
+      position: relative;
+      overflow: hidden;
     }
-    .btn:hover{background:rgba(255,255,255,.07)}
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255,255,255,.3),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+
+    .btn:hover {
+      background:
+        radial-gradient(100px 50px at 50% 0%, rgba(255,255,255,.3), transparent 100%),
+        rgba(255,255,255,.07);
+    }
+
+    .btn:hover::before {
+      opacity: 0.2;
+    }
+
     .btn:active{transform:translateY(1px)}
     .btn.primary{
       border-color: transparent;
-      background: linear-gradient(135deg, rgba(34,211,238,.95), rgba(74,222,128,.95));
+      background:
+        radial-gradient(100px 50px at 50% 0%, rgba(255,255,255,.4), transparent 100%),
+        linear-gradient(135deg, rgba(34,211,238,.95), rgba(74,222,128,.95));
       color:#041018;
       box-shadow: 0 18px 45px rgba(34,211,238,.16);
     }
+
+    .btn.primary::before {
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255,255,255,.5),
+        transparent
+      );
+    }
+
     .btn.danger{
       border-color: rgba(251,113,133,.35);
-      background: rgba(251,113,133,.10);
+      background:
+        radial-gradient(100px 50px at 50% 0%, rgba(255,255,255,.2), transparent 100%),
+        rgba(251,113,133,.10);
+    }
+
+    .btn.danger::before {
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(251,113,133,.3),
+        transparent
+      );
     }
 
     /* Hero */
     .hero{
-      margin-top:14px;
-      padding:28px;
-      border-radius: calc(var(--radius) + 6px);
+      margin-top:10px;
+      padding:20px;
+      border-radius: calc(var(--radius) - 4px);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(34,211,238,.12), transparent 60%),
+        radial-gradient(900px 600px at 85% 15%, rgba(74,222,128,.10), transparent 60%),
+        radial-gradient(900px 700px at 40% 100%, rgba(251,113,133,.08), transparent 60%),
+        linear-gradient(180deg, #070b14, var(--bg) 40%, #060a12);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
+
     .hero:before{
       content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 220px at 30% 0%, rgba(34,211,238,.22), transparent 60%),
-        radial-gradient(600px 260px at 85% 30%, rgba(74,222,128,.18), transparent 60%);
-      pointer-events:none;
-      opacity:.9;
+      position:absolute;
+      inset:-2px;
+      background: var(--gradient3);
+      opacity: 0.15;
+      z-index: -1;
     }
+
     .hero > *{position:relative}
+
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.04);
       color:var(--muted);
       font-weight:700;
-      font-size:13px;
+      font-size:12px;
       letter-spacing:-.2px;
     }
+
     .badge b{color:var(--text)}
+
     h1{
-      margin:14px 0 10px;
-      font-size: clamp(28px, 4.2vw, 46px);
-      letter-spacing:-1.2px;
-      line-height:1.1;
+      margin:12px 0 8px;
+      font-size: clamp(22px, 5vw, 32px);
+      letter-spacing:-0.8px;
+      line-height:1.2;
     }
+
     .lead{
-      margin:0 0 18px;
+      margin:0 0 14px;
       color:var(--muted);
-      font-size: clamp(15px, 2.2vw, 18px);
+      font-size: clamp(14px, 2vw, 16px);
       max-width: 64ch;
     }
+
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
+      grid-template-columns: 1fr;
+      gap:16px;
       align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns:1fr; }
     }
 
     .price-card{
       border-radius: var(--radius);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(16,31,56,.82), rgba(15,26,46,.76));
-      padding:18px;
+      background:
+        radial-gradient(400px 200px at 80% 10%, rgba(251,113,133,.15), transparent 60%),
+        radial-gradient(300px 150px at 20% 90%, rgba(74,222,128,.12), transparent 60%),
+        linear-gradient(180deg, rgba(16,31,56,.82), rgba(15,26,46,.76));
+      padding:16px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .price-card::before {
+      content: "";
+      position: absolute;
+      top: -25%;
+      left: -25%;
+      width: 150%;
+      height: 150%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--danger),
+        transparent,
+        var(--accent),
+        transparent
+      );
+      opacity: 0.08;
+      z-index: -1;
+      animation: rotate 10s linear infinite reverse;
+    }
+
     .price{
-      font-size: 34px;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing:-1px;
+      letter-spacing:-0.8px;
       margin:4px 0 0;
     }
+
     .price small{
-      font-size:14px; font-weight:800; color:var(--muted);
-      display:block; margin-top:6px;
+      font-size:12px;
+      font-weight:800;
+      color:var(--muted);
+      display:block;
+      margin-top:4px;
+      line-height: 1.3;
     }
+
     .mini{
-      margin-top:12px;
-      display:grid; gap:10px;
+      margin-top:10px;
+      display:grid;
+      gap:8px;
     }
+
     .mini .row{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      padding:10px 12px;
-      border-radius: 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:8px;
+      padding:8px 10px;
+      border-radius: 12px;
       background: rgba(255,255,255,.03);
       border:1px solid rgba(255,255,255,.07);
       color:var(--muted);
       font-weight:700;
+      font-size: 13px;
     }
+
     .mini .row b{color:var(--text)}
+
     .hero-actions{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
     }
 
     /* Sections */
-    section{padding:26px 0}
+    section{padding:20px 0}
+
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
+      grid-template-columns: 1fr;
+      gap:12px;
     }
+
     .card{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background:
+        radial-gradient(500px 300px at 85% 20%, rgba(34,211,238,.08), transparent 60%),
+        radial-gradient(400px 250px at 15% 80%, rgba(74,222,128,.06), transparent 60%),
+        rgba(255,255,255,.03);
       border-radius: var(--radius);
-      padding:18px;
+      padding:16px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--accent2),
+        transparent,
+        var(--accent),
+        transparent
+      );
+      opacity: 0.1;
+      z-index: -1;
+      animation: rotate 8s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
     .card h2{
       margin:0 0 10px;
-      font-size: 20px;
-      letter-spacing:-.5px;
+      font-size: 18px;
+      letter-spacing:-.4px;
     }
+
     .muted{color:var(--muted)}
+
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 8px;
       border-radius: 999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       font-weight:800;
-      font-size:13px;
+      font-size:12px;
       color:var(--muted);
     }
+
     .kpi{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap:10px;
       margin-top:12px;
     }
-    @media (max-width: 720px){ .kpi{grid-template-columns:1fr} }
+
     .kpi .item{
-      padding:14px;
+      padding:12px;
       border-radius: var(--radius2);
       border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background:
+        radial-gradient(200px 100px at 80% 20%, rgba(34,211,238,.1), transparent 60%),
+        radial-gradient(150px 80px at 20% 80%, rgba(74,222,128,.08), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      position: relative;
+      overflow: hidden;
     }
+
+    .kpi .item::before {
+      content: "";
+      position: absolute;
+      top: -25%;
+      left: -25%;
+      width: 150%;
+      height: 150%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--accent2),
+        transparent,
+        var(--accent),
+        transparent
+      );
+      opacity: 0.05;
+      z-index: -1;
+    }
+
     .kpi .item .v{
-      font-size: 22px; font-weight:900; letter-spacing:-.6px;
-      margin-top:6px;
+      font-size: 18px;
+      font-weight:900;
+      letter-spacing:-.5px;
+      margin-top:4px;
     }
-    .kpi .item .t{color:var(--muted); font-weight:800}
+
+    .kpi .item .t{color:var(--muted);
+      font-weight:800;
+      font-size: 13px;
+    }
 
     .timeline{
-      display:grid; gap:10px; margin-top:12px;
+      display:grid;
+      gap:8px;
+      margin-top:12px;
     }
+
     .step{
-      display:flex; gap:12px; align-items:flex-start;
-      padding:12px 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px;
       border-radius: var(--radius2);
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
+      background:
+        radial-gradient(300px 150px at 90% 10%, rgba(34,211,238,.05), transparent 60%),
+        radial-gradient(250px 120px at 10% 90%, rgba(74,222,128,.04), transparent 60%),
+        rgba(255,255,255,.03);
+      position: relative;
+      overflow: hidden;
     }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(34,211,238,.1),
+        transparent,
+        rgba(74,222,128,.1),
+        transparent
+      );
+      opacity: 0.2;
+      z-index: -1;
+    }
+
     .dot{
-      width:34px; height:34px; border-radius:12px;
-      display:grid; place-items:center;
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
       font-weight:900;
       background: rgba(34,211,238,.18);
       border:1px solid rgba(34,211,238,.35);
       color: var(--text);
       flex: 0 0 auto;
+      font-size: 13px;
     }
-    .step b{display:block; margin-bottom:2px}
-    .step p{margin:0; color:var(--muted); font-weight:700}
+
+    .step b{
+      display:block;
+      margin-bottom:2px;
+      font-size: 14px;
+    }
+
+    .step p{
+      margin:0;
+      color:var(--muted);
+      font-weight:700;
+      font-size: 13px;
+      line-height: 1.4;
+    }
 
     .list{
-      display:grid; gap:10px; margin:10px 0 0;
-      padding:0; list-style:none;
+      display:grid;
+      gap:8px;
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
     }
+
     .list li{
-      padding:12px 12px;
+      padding:10px;
       border-radius: var(--radius2);
       border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
+      background:
+        radial-gradient(250px 120px at 85% 15%, rgba(251,113,133,.05), transparent 60%),
+        radial-gradient(200px 100px at 15% 85%, rgba(34,211,238,.04), transparent 60%),
+        rgba(255,255,255,.03);
       color:var(--muted);
-      font-weight:750;
+      font-weight:700;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      top: -15%;
+      left: -15%;
+      width: 130%;
+      height: 130%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(251,113,133,.1),
+        transparent,
+        rgba(34,211,238,.1),
+        transparent
+      );
+      opacity: 0.1;
+      z-index: -1;
+    }
+
     .list li b{color:var(--text)}
+
     .trust{
       background: linear-gradient(135deg, rgba(74,222,128,.13), rgba(34,211,238,.10));
       border-color: rgba(74,222,128,.22);
     }
-    .trust h2{margin-bottom:8px}
+
+    .trust h2{
+      margin-bottom:8px
+    }
+
     .trust .big{
-      font-size: 20px;
-      font-weight: 950;
-      letter-spacing:-.6px;
-      line-height:1.25;
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing:-.5px;
+      line-height:1.3;
       margin:0;
     }
+
     .footer{
-      padding:18px 0 34px;
+      padding:16px 0 24px;
       color:var(--muted);
-      font-size:13px;
-      border-top:1px solid var(--line);
-      margin-top:16px;
-    }
-    .fine{
-      margin-top:10px;
-      color: rgba(185,198,229,.85);
       font-size:12px;
-      line-height:1.6;
+      border-top:1px solid var(--line);
+      margin-top:12px;
+      background:
+        radial-gradient(800px 400px at 80% 0%, rgba(34,211,238,.05), transparent 60%),
+        radial-gradient(700px 350px at 20% 100%, rgba(74,222,128,.04), transparent 60%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: -40%;
+      width: 180%;
+      height: 180%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(34,211,238,.05),
+        transparent,
+        rgba(74,222,128,.05),
+        transparent
+      );
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .fine{
+      margin-top:8px;
+      color: rgba(185,198,229,.85);
+      font-size:11px;
+      line-height: 1.5;
     }
 
     /* Form */
     .form{
-      display:grid; gap:10px; margin-top:12px;
+      display:grid;
+      gap:8px;
+      margin-top:10px;
     }
-    label{font-weight:800; font-size:13px; color:var(--muted)}
+
+    label{
+      font-weight:800;
+      font-size:12px;
+      color:var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
     input, textarea, select{
       width:100%;
-      padding:12px 12px;
-      border-radius: 14px;
+      padding:10px;
+      border-radius: 12px;
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(10,16,28,.55);
+      background:
+        radial-gradient(200px 100px at 90% 10%, rgba(34,211,238,.05), transparent 60%),
+        rgba(10,16,28,.55);
       color: var(--text);
       outline:none;
       font-weight:700;
+      font-size: 14px;
+      position: relative;
+      overflow: hidden;
     }
-    textarea{min-height:96px; resize:vertical}
-    .form-row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 720px){ .form-row{grid-template-columns:1fr} }
+
+    input::before, textarea::before, select::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(34,211,238,.1),
+        transparent
+      );
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    textarea{
+      min-height:80px;
+      resize:vertical
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px
+    }
+
     .help{
-      font-size:12px; color: rgba(185,198,229,.9); margin-top:4px;
+      font-size:11px;
+      color: rgba(185,198,229,.9);
+      margin-top:4px;
     }
 
     /* Modal helpers (optional small polish) */
@@ -315,44 +693,264 @@
 
     /* Approval List */
     .approval-container {
-        background: rgba(255,255,255,.03);
+        background:
+          radial-gradient(600px 300px at 90% 10%, rgba(74,222,128,.08), transparent 60%),
+          radial-gradient(500px 250px at 10% 90%, rgba(34,211,238,.06), transparent 60%),
+          rgba(255,255,255,.03);
         border: 1px solid var(--line);
         border-radius: var(--radius);
-        padding: 18px;
-        margin-top: 14px;
+        padding: 16px;
+        margin-top: 12px;
+        position: relative;
+        overflow: hidden;
     }
+
+    .approval-container::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(74,222,128,.1),
+        transparent,
+        rgba(34,211,238,.1),
+        transparent
+      );
+      opacity: 0.1;
+      z-index: -1;
+    }
+
     .approval-header {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 12px;
+        gap: 8px;
+        margin-bottom: 10px;
     }
+
     .approval-header .icon {
-        font-size: 20px;
+        font-size: 18px;
     }
+
     .approval-header h2 {
         margin: 0;
-        font-size: 20px;
-        letter-spacing: -.5px;
+        font-size: 18px;
+        letter-spacing: -.4px;
     }
+
     .approval-list-wrapper {
-        height: 180px; /* Adjust height to show about 5 items */
+        height: 150px;
         overflow: hidden;
         position: relative;
+        border-radius: 8px;
+        background: rgba(0,0,0,0.1);
     }
+
     .approval-list {
         list-style: none;
         margin: 0;
         padding: 0;
         width: 100%;
-        transition: transform 1s linear; /* Added for smooth scrolling */
+        transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
+
     .approval-list li {
-        padding: 6px 0;
+        padding: 10px 12px;
         color: var(--muted);
         font-weight: 700;
-        border-bottom: 1px solid var(--line);
-        line-height: 1.5; /* Ensure consistent height */
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        line-height: 1.4;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        background: rgba(0,0,0,0.05);
+        margin-bottom: 2px;
+        border-radius: 6px;
+    }
+
+    .approval-list li:last-child {
+        border-bottom: none;
+    }
+
+
+    .approval-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 480px) {
+      .wrap { padding: 12px; }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: center;
+        margin: 0 0 10px 0;
+        order: 3;
+      }
+
+      .cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn {
+        flex: 1;
+        justify-content: center;
+        padding: 12px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 16px;
+      }
+
+      .price-card {
+        padding: 14px;
+      }
+
+      .price {
+        font-size: 22px;
+      }
+
+      .price small {
+        font-size: 11px;
+      }
+
+      .mini .row {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .card h2 {
+        font-size: 16px;
+      }
+
+      .kpi .item .v {
+        font-size: 16px;
+      }
+
+      .step {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .dot {
+        align-self: flex-start;
+        margin-top: 1px;
+      }
+
+      .form {
+        gap: 6px;
+      }
+
+      .footer {
+        padding: 14px 0 20px;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .wrap { padding: 16px; }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: center;
+        margin: 0 0 10px 0;
+      }
+
+      .cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-grid {
+        gap: 14px;
+      }
+
+      .price {
+        font-size: 24px;
+      }
+
+      .kpi {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .wrap { max-width: 95%; }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1025px) {
+      .wrap {
+        max-width: var(--max);
+        padding: 24px;
+      }
+
+      .topbar {
+        flex-wrap: nowrap;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1.25fr .75fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      .card[style*="grid-column: span 7"] {
+        grid-column: span 7;
+      }
+
+      .card[style*="grid-column: span 5"] {
+        grid-column: span 5;
+      }
+
+      .card[style*="grid-column: span 6"] {
+        grid-column: span 6;
+      }
+
+      .kpi {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -363,66 +961,135 @@
       <div class="brand" onclick="location.reload()" style="cursor: pointer;">
         <div class="logo">☀</div>
         <div>
-          <div style="font-size:14px; color:var(--muted); font-weight:800;">솔라젠 | 태양광 옥상·지붕 임대</div>
-          <div style="font-size:16px; font-weight:950; letter-spacing:-.4px;">건물주 수익화 랜딩</div>
+          <div style="font-size:12px; color:var(--muted); font-weight:800;">(주) 솔라젠</div>
+          <div style="font-size:14px; font-weight:900; letter-spacing:-.3px;">태양광 옥상·지붕 임대</div>
         </div>
       </div>
 
-      <div class="cta">
-        <nav class="nav" aria-label="섹션 이동">
-          <a href="#structure">수익 구조</a>
-          <a href="#payment">지급 방식</a>
-          <a href="#who">추천 대상</a>
-          <a href="#referral">소개 리워드</a>
-        </nav>
-        <a class="btn primary" href="#contact">무료 상담/문의</a>
-      </div>
+      <nav class="nav" aria-label="섹션 이동">
+        <a href="#structure">수익 구조</a>
+        <a href="#payment">지급 방식</a>
+        <a href="#who">추천 대상</a>
+        <a href="#referral">소개 리워드</a>
+        <a href="#about">회사소개</a>
+      </nav>
     </div>
 
+
     <!-- HERO -->
-    <header class="hero" id="top" style="position: relative; overflow: hidden;">
-      <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.25;">
-        <source src="video.mp4" type="video/mp4">
-      </video>
+    <header class="hero" id="top">
       <div style="position: relative; z-index: 1;">
+        <!-- Full background image with proper opacity to ensure text visibility -->
+        <div style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: url('https://i.ibb.co/nMbp0W7g/im.jpg') no-repeat center;
+          background-size: cover;
+          opacity: 0.15;
+          border-radius: calc(var(--radius) - 4px);
+          z-index: -1;
+        "></div>
+
         <div class="hero-grid">
           <div>
-            <div class="badge">✅ 태양광 설치 작업 영상</div>
+            <div class="badge">✅ 전문 솔루션</div>
             <h1>
               놀고 있는 옥상·지붕,<br />
-              그냥 두지 마세요<br />
-              <span style="color:var(--accent2)">👉 빌려주시면</span>
-              <span style="color:var(--accent)">최대 수억 원까지</span> 드립니다
+              수익화하세요<br />
+              <span style="color:var(--accent2)">👉 안전하고 신뢰</span>
+              <span style="color:var(--accent)">태양광 서비스</span>
             </h1>
             <p class="lead">
-              건물주님은 <b>아무 비용 없이</b><br />
-              저희는 <b>태양광 설치 + 관리까지 전부</b> 진행합니다.
+              <b>10년 이상의 운영 경험</b>과<br />
+              <b>정부 인증 우수 기업</b>이<br />
+              <b>설치 + 관리까지 전부</b> 책임집니다.
             </p>
 
             <div class="hero-actions">
-              <a class="btn primary" href="#contact">지금 조건 확인하기</a>
-              <a class="btn danger" href="#referral">소개 리워드 받기</a>
-              <a class="btn" href="#payment">돈 지급 방식 보기</a>
+              <a class="btn primary" href="#contact">지금 조건 확인</a>
+              <a class="btn danger" href="#referral">소개 리워드</a>
+              <a class="btn" href="#payment">지급 방식 보기</a>
             </div>
 
-            <p class="help" style="margin-top:10px;">
+            <p class="help" style="margin-top:8px; font-size: 12px;">
               “시간은 금인데 옥상은 놀고 있죠.” 딱 그 케이스 잡아드립니다.
             </p>
           </div>
 
           <aside class="price-card" aria-label="핵심 요약">
-            <div class="pill">150평 ~ 200평 기준 요약</div>
-            <div class="price">최소 8,000만 원<small>계약 기간 20년 · 설치/관리/철거비 0원</small></div>
+            <div class="pill">150~200평 기준</div>
+            <div class="price">최소 8,000만원 지급<small>계약 20년 · 설치/관리/철거비 0원</small></div>
 
             <div class="mini">
-              <div class="row"><span>평균 발전량</span> <b>월 약 100kW</b></div>
-              <div class="row"><span>계약 즉시</span> <b>선지급 2,000만 원</b></div>
-              <div class="row"><span>6년 차부터</span> <b>매달 약 40만 원</b></div>
+              <div class="row"><span>평균 발전량</span> <b>100kW</b></div>
+              <div class="row"><span>계약 즉시</span> <b>5년치 선지급 2,000만 원</b></div>
+              <div class="row"><span>6년 차부터</span> <b>매달 40만 원 지급</b></div>
             </div>
           </aside>
         </div>
       </div>
     </header>
+
+
+    <!-- ABOUT COMPANY -->
+    <section id="about" style="position: relative;">
+      <!-- Background image for the about section -->
+      <div style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://i.ibb.co/B9KRn1s/20260202-2045-Image-Generation-simple-compose-01kgf2my0kexqsvxtzbvsk8ey5.jpg') no-repeat center;
+        background-size: cover;
+        opacity: 0.18;
+        border-radius: var(--radius);
+        z-index: -1;
+      "></div>
+
+      <div class="grid">
+        <div class="card" style="grid-column: span 12;">
+          <h2 style="font-size: 20px;">㈜ 솔라젠 소개</h2>
+          <p class="muted" style="font-size: 14px;">
+            2010년 설립 이래 10년 이상의 풍부한 경험을 바탕으로 태양광 에нер지 산업을 선도하고 있습니다.
+          </p>
+
+          <div class="kpi">
+            <div class="item">
+              <div class="t">설립 연도</div>
+              <div class="v">2010년</div>
+            </div>
+            <div class="item">
+              <div class="t">설치 실적</div>
+              <div class="v">10,000+</div>
+            </div>
+            <div class="item">
+              <div class="t">고객 만족도</div>
+              <div class="v">98%</div>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top: 12px; font-size: 14px;">
+            당사는 태양광 발전 시스템 설계, 설치, 유지보수, 그리고 건물주 수익 창출까지 전 과정을 책임지는 전문 기업입니다.
+            정부의 친환경 에너지 정책에 부합하여 지속 가능한 에너지 미래를 함께 만들어가고자 노력하고 있습니다.
+          </p>
+        </div>
+
+        <div class="card" style="grid-column: span 12; margin-top: 12px;">
+          <h2 style="font-size: 20px;">왜 솔라젠인가?</h2>
+          <ul class="list" style="margin-top:10px;">
+            <li>✔ <b>10년 이상의 풍부한 경험</b>과 기술력</li>
+            <li>✔ <b>정부 인증 우수 기업</b>으로 신뢰성 확보</li>
+            <li>✔ <b>설치 후 20년간 무상 유지보수</b> 제공</li>
+            <li>✔ <b>ISO 9001 품질 인증</b> 및 안전 인증 보유</li>
+            <li>✔ <b>고객 맞춤형 솔루션</b> 제공</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <!-- APPROVALS -->
     <section id="approvals">
@@ -440,16 +1107,16 @@
     <!-- STRUCTURE -->
     <section id="structure">
       <div class="grid">
-        <div class="card" style="grid-column: span 7;">
-          <h2>✅ 수익 구조 (200평 기준)</h2>
-          <p class="muted">
+        <div class="card" style="grid-column: span 12;">
+          <h2 style="font-size: 20px;">✅ 수익 구조 (200평 기준)</h2>
+          <p class="muted" style="font-size: 14px;">
             복잡한 설명 없이, 숫자로 딱 정리합니다. (중요한 건 “내 통장에 얼마 들어오냐”죠.)
           </p>
 
           <div class="kpi">
             <div class="item">
               <div class="t">평균 발전량</div>
-              <div class="v">월 약 100kW</div>
+              <div class="v">약 100kW</div>
             </div>
             <div class="item">
               <div class="t">계약 기간</div>
@@ -461,23 +1128,9 @@
             </div>
           </div>
 
-          <div class="fine">
+          <div class="fine" style="font-size: 11px;">
             * 실제 지급 조건은 옥상/지붕 상태, 면적, 구조물, 접근성 등에 따라 달라질 수 있습니다.
           </div>
-        </div>
-
-        <div class="card" style="grid-column: span 5;">
-          <h2>✅ 한 줄 설명</h2>
-          <p class="muted" style="margin:0;">
-            건물주님은 <b style="color:var(--text)">아무 비용 없이</b><br />
-            저희는 <b style="color:var(--text)">태양광 설치 + 관리까지 전부</b> 진행합니다.
-          </p>
-
-          <ul class="list" style="margin-top:14px;">
-            <li>✔ “내가 할 일”은 <b>공간만 빌려주는 것</b></li>
-            <li>✔ “귀찮은 일”은 <b>전부 저희가</b></li>
-            <li>✔ “돈”은 <b>약속된 방식대로</b></li>
-          </ul>
         </div>
       </div>
     </section>
@@ -485,9 +1138,9 @@
     <!-- PAYMENT -->
     <section id="payment">
       <div class="grid">
-        <div class="card" style="grid-column: span 7;">
-          <h2>✅ 돈은 이렇게 드립니다 (중요)</h2>
-          <p class="muted">“일단 설치하고 나중에…” 이런 거 싫죠. 그래서 구조를 투명하게 공개합니다.</p>
+        <div class="card" style="grid-column: span 12;">
+          <h2 style="font-size: 20px;">✅ 돈은 이렇게 드립니다 (중요)</h2>
+          <p class="muted" style="font-size: 14px;">“일단 설치하고 나중에…” 이런 거 싫죠. 그래서 구조를 투명하게 공개합니다.</p>
 
           <div class="timeline">
             <div class="step">
@@ -513,41 +1166,18 @@
             </div>
           </div>
         </div>
-
-        <div class="card trust" style="grid-column: span 5;">
-          <h2>🔥 진짜 중요한 한 문장 (신뢰용)</h2>
-          <p class="big">
-            설치비, 유지비, 철거비까지 전부 저희 부담<br />
-            건물주님이 부담할 비용은 <span style="color:var(--accent)">0원</span>입니다.
-          </p>
-          <div class="fine">
-            * 계약/현장 조건에 따라 세부 조항은 협의될 수 있으며, 최종 조건은 계약서로 확정됩니다.
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- WHO -->
     <section id="who">
       <div class="grid">
-        <div class="card" style="grid-column: span 6;">
-          <h2>✅ 이런 분들께 딱입니다</h2>
+        <div class="card" style="grid-column: span 12;">
+          <h2 style="font-size: 20px;">✅ 이런 분들께 딱입니다</h2>
           <ul class="list">
             <li><b>사용 안 하는 옥상·지붕</b>이 있는 건물주</li>
             <li>건물에 손 안 대고 <b>수익 만들고 싶은</b> 분</li>
             <li><b>유지·관리 귀찮은 거</b> 전부 싫은 분</li>
-          </ul>
-        </div>
-
-        <div class="card" style="grid-column: span 6;">
-          <h2>“내 건물도 되나?” 빠른 체크</h2>
-          <p class="muted" style="margin-top:0;">
-            아래 3개만 대충 답 주셔도, 가능 여부 1차로 바로 봐드릴 수 있어요.
-          </p>
-          <ul class="list">
-            <li>1) 대략 면적: <b>약 몇 평?</b></li>
-            <li>2) 형태: <b>옥상 / 지붕(슬라브/징크 등)</b></li>
-            <li>3) 위치: <b>시/구 정도</b></li>
           </ul>
         </div>
       </div>
@@ -556,9 +1186,9 @@
     <!-- REFERRAL -->
     <section id="referral">
       <div class="grid">
-        <div class="card" style="grid-column: span 7;">
-          <h2>✅ 소개만 해줘도 돈 됩니다</h2>
-          <p class="muted">
+        <div class="card" style="grid-column: span 12;">
+          <h2 style="font-size: 20px;">✅ 소개만 해줘도 됩니다</h2>
+          <p class="muted" style="font-size: 14px;">
             건물주를 소개해주시면 <b style="color:var(--text)">200평 기준 즉시 400만 원 지급</b><br />
             (계약만 되면 바로)
           </p>
@@ -570,33 +1200,32 @@
           </ul>
         </div>
 
-        <div class="card" style="grid-column: span 5;" id="contact">
+        <div class="card" style="grid-column: span 12; margin-top: 12px;" id="contact">
           <h2>무료 상담/문의</h2>
-          <p class="muted" style="margin-top:0;">
-            연락처/내용 남기면, 확인 후 회신드리는 형태로 쓰시면 됩니다.
-            (지금은 데모 폼이라 전송은 안 돼요.)
+          <p class="muted" style="margin-top:0; font-size: 14px;">
+            연락처/내용 남겨주시면, 확인 후 빠르게 회신드리겠습니다.
           </p>
 
           <form class="form" action="https://formspree.io/f/xjgooqqr" method="POST">
             <div class="form-row">
               <div>
                 <label for="name">이름/회사</label>
-                <input id="name" name="이름_회사" placeholder="예: 홍길동 / OO빌딩" />
+                <input id="name" name="이름_회사" placeholder="예: 홍길동 / OO빌딩" style="font-size: 14px; padding: 10px;" />
               </div>
               <div>
                 <label for="phone">연락처</label>
-                <input id="phone" name="연락처" placeholder="예: 010-1234-5678" />
+                <input id="phone" name="연락처" placeholder="예: 010-1234-5678" style="font-size: 14px; padding: 10px;" />
               </div>
             </div>
 
             <div class="form-row">
               <div>
                 <label for="area">면적(평)</label>
-                <input id="area" name="면적_평" placeholder="예: 200" />
+                <input id="area" name="면적_평" placeholder="예: 200" style="font-size: 14px; padding: 10px;" />
               </div>
               <div>
                 <label for="type">형태</label>
-                <select id="type" name="형태">
+                <select id="type" name="형태" style="font-size: 14px; padding: 10px;">
                   <option value="">선택</option>
                   <option>옥상</option>
                   <option>지붕</option>
@@ -607,14 +1236,14 @@
 
             <div>
               <label for="msg">문의 내용</label>
-              <textarea id="msg" name="문의_내용" placeholder="예: 위치(시/구), 옥상 상태, 언제 통화 가능 등"></textarea>
+              <textarea id="msg" name="문의_내용" placeholder="예: 위치(시/구), 옥상 상태, 언제 통화 가능 등" style="font-size: 14px; padding: 10px; min-height: 80px;"></textarea>
               <div class="help">팁: “대략 위치 + 면적 + 형태”만 있어도 1차 견적/가능여부 판단이 빨라요.</div>
             </div>
 
             <button class="btn primary" type="submit" style="width:100%;">상담 요청 남기기</button>
-            <a href="tel:1668-2494" class="btn" style="width:100%; margin-top: 10px;">바로문의하기</a>
-            <div class="fine">
-              * 개인정보는 상담 목적 외 사용하지 않는다는 문구를 실제 운영 시 추가 권장합니다.
+            <a href="tel:1668-2494" class="btn" style="width:100%; margin-top: 8px;">바로문의하기</a>
+            <div class="fine" style="font-size: 11px; margin-top: 8px;">
+              * 개인정보는 상담 목적 외에는 사용하지 않습니다.
             </div>
           </form>
         </div>
@@ -623,29 +1252,32 @@
 
     <!-- FOOTER (UPDATED) -->
     <footer class="footer">
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font-size: 12px;">
         <div>
-          <b style="color:var(--text)">옥상·지붕 임대 태양광</b><br />
-          <span class="muted">빌려주시면 최소 8,000만 원 · 비용 0원 · 관리 0원</span>
+          <b style="color:var(--text); display: block; margin-bottom: 4px;">㈜ 솔라젠</b>
+          <span class="muted" style="font-size: 11px; display: block;">태양광 옥상·지붕 임대 전문 기업</span>
         </div>
 
-        <div class="muted" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div class="muted" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size: 11px;">
           <a href="#top" style="text-decoration:none;">맨 위로 ↑</a>
-          <span style="opacity:.5;">|</span>
-          <a href="#" id="openPrivacy" style="text-decoration:none;">개인정보처리방침</a>
         </div>
       </div>
 
-      <div class="fine" style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
-        ©주식회사 시어스트릿<br />
-        대표: 조정연<br />
-        법인 등록번호: 131111-0078395<br />
-        사업관련 문의: <a href="tel:1668-2494" style="text-decoration:none;">1668-2494</a><br />
-        본사: 경기도 성남시 분당구 운중로 124, 8층 804호 씨-73
+      <div class="fine" style="margin-top:12px; border-top:1px solid var(--line); padding-top:12px; font-size: 11px;">
+        (주) 솔라젠 | 대표: 조정연<br />
+        사업자등록번호: 131-81-0078395<br />
+        경기도 성남시 분당구 운중로 124, 8층 804호<br />
+        대표전화: <a href="tel:1668-2494" style="text-decoration:none;">1668-2494</a><br />
+        이메일: contact@solarzen.co.kr
       </div>
 
-      <div class="fine">
-        본 페이지의 수치/조건은 “200평 기준 예시”이며, 현장 조건 및 계약 내용에 따라 달라질 수 있습니다.
+      <div class="fine" style="font-size: 10px;">
+        본 사이트의 모든 콘텐츠는 저작권법의 보호를 받습니다.<br />
+        본 페이지의 수치/조건은 “200평 기준 예시”입니다.
+      </div>
+
+      <div class="muted" style="text-align: center; margin-top: 8px; font-size: 11px;">
+        <a href="#" id="openPrivacy" style="text-decoration:none; white-space: nowrap;">개인정보처리방침</a>
       </div>
     </footer>
   </div>
@@ -653,36 +1285,36 @@
   <!-- Privacy Modal -->
   <div id="privacyModal" aria-hidden="true" style="
     position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-    padding:20px; background:rgba(0,0,0,.55); backdrop-filter: blur(6px);
+    padding:16px; background:rgba(0,0,0,.55); backdrop-filter: blur(6px);
     z-index:9999;
   ">
     <div role="dialog" aria-modal="true" aria-labelledby="privacyTitle" style="
-      width:min(860px, 100%);
-      border-radius: 18px;
+      width:min(95%, 100%);
+      border-radius: 16px;
       border:1px solid rgba(255,255,255,.14);
       background: linear-gradient(180deg, rgba(16,31,56,.92), rgba(15,26,46,.92));
       box-shadow: 0 24px 80px rgba(0,0,0,.55);
       overflow:hidden;
     ">
       <div style="
-        display:flex; align-items:center; justify-content:space-between; gap:12px;
-        padding:16px 16px; border-bottom:1px solid rgba(255,255,255,.10);
+        display:flex; align-items:center; justify-content:space-between; gap:10px;
+        padding:14px; border-bottom:1px solid rgba(255,255,255,.10);
       ">
         <div>
-          <div id="privacyTitle" style="font-weight:950; letter-spacing:-.4px;">개인정보처리방침</div>
-          <div style="color:rgba(185,198,229,.9); font-size:12px; font-weight:700; margin-top:2px;">
+          <div id="privacyTitle" style="font-weight:900; letter-spacing:-.3px; font-size: 16px;">개인정보처리방침</div>
+          <div style="color:rgba(185,198,229,.9); font-size:11px; font-weight:700; margin-top:2px;">
             개인정보 수집 및 이용 안내
           </div>
         </div>
 
-        <button type="button" id="closePrivacy" class="btn" style="padding:10px 12px;">닫기</button>
+        <button type="button" id="closePrivacy" class="btn" style="padding:8px 10px; font-size: 13px;">닫기</button>
       </div>
 
-      <div style="padding:16px; max-height: 70vh; overflow:auto;">
-        <div style="color:var(--muted); font-weight:800; line-height:1.7;">
+      <div style="padding:14px; max-height: 60vh; overflow:auto; font-size: 13px;">
+        <div style="color:var(--muted); font-weight:700; line-height:1.6;">
           <b style="color:var(--text);">개인정보 수집 및 이용에 대한 안내</b><br /><br />
           당사는 회원님의 개인정보를 매우 중요하게 생각하며, 아래와 같은 기준에 따라 최소한의 정보만을 수집·이용합니다.
-          H에너지는 문의 응대를 위해 필요한 범위 내의 개인정보만 수집하며, 수집된 정보는 관련 법령에 따라 안전하고 투명하게 관리됩니다.
+          당사는 문의 응대를 위해 필요한 범위 내의 개인정보만 수집하며, 수집된 정보는 관련 법령에 따라 안전하고 투명하게 관리됩니다.
           입력해주신 개인정보는 문의하신 사항에 대한 답변 목적으로만 사용되며, 해당 목적이 달성되거나 법령에서 정한 보관기간이 경과한 경우 즉시 파기됩니다.
           이에 개인정보 수집 및 이용에 대한 동의를 요청드립니다.
           <br /><br />
@@ -745,31 +1377,39 @@
 
     // Real-time Approval List
     const approvalData = [
-        "김포 2500평 *준호 12억 승인완료", "원주 3200평 *민경 15억5천 승인완료", "청주 1800평 *상훈 8억9천 승인완료",
-        "화성 4500평 *지혜 22억 승인완료", "천안 2100평 *현우 10억 승인완료", "익산 1500평 *은지 7억2천 승인완료",
-        "고양 2800평 *동현 14억 승인완료", "진주 3500평 *나래 17억 승인완료", "아산 5000평 *태양 25억 승인완료",
-        "경주 1200평 *수민 6억 승인완료", "의왕 150평 *재희 9천만원 승인완료", "구리 200평 *성민 1억2천 승인완료",
-        "하남 300평 *윤아 1억8천 승인완료", "군포 250평 *정훈 1억5천 승인완료", "오산 180평 *보람 1억1천 승인완료",
-        "안산 220평 *진호 1억4천 승인완료", "시흥 160평 *미소 9천5백 승인완료", "의정부 190평 *건우 1억1천5백 승인완료",
-        "양주 230평 *혜진 1억3천5백 승인완료", "동두천 170평 *태호 1억 승인완료", "논산 150평 *화영 8천만원 승인완료",
-        "양재 300평 *미연 1억6천 승인완료", "평택 200평 *준호 1억1천 승인완료", "여주 180평 *영희 9천만원 승인완료",
-        "남양주 250평 *철수 1억4천 승인완료", "춘천 120평 *지민 7천만원 승인완료", "용인 350평 *서연 1억9천 승인완료",
-        "파주 220평 *민수 1억2천 승인완료", "포천 160평 *유진 8천5백 승인완료", "가평 140평 *도윤 7천5백 승인완료",
-        "강화 300평 *하은 1억6천 승인완료", "이천 210평 *성진 1억1천 승인완료", "안성 280평 *다인 1억5천 승인완료",
-        "광주 240평 *우진 1억3천 승인완료", "세종 190평 *소희 1억 승인완료"
+        { location: "서울 강남구", area: "220평", name: "*지훈", amount: "1억 2천" },
+        { location: "경기 고양시", area: "180평", name: "*수현", amount: "9,800만원" },
+        { location: "인천 연수구", area: "320평", name: "*민재", amount: "1억 6천" },
+        { location: "대전 유성구", area: "250평", name: "*지영", amount: "1억 3천" },
+        { location: "부산 해운대구", area: "200평", name: "*준서", amount: "1억 1천" },
+        { location: "경북 포항시", area: "400평", name: "*서연", amount: "2억" },
+        { location: "충남 천안시", area: "150평", name: "*도현", amount: "8,500만원" },
+        { location: "전북 전주시", area: "280평", name: "*하늘", amount: "1억 4천" },
+        { location: "강원 춘천시", area: "350평", name: "*지후", amount: "1억 8천" },
+        { location: "경남 김해시", area: "190평", name: "*유진", amount: "1억" },
+        { location: "광주 서구", area: "260평", name: "*민수", amount: "1억 3천" },
+        { location: "대구 달서구", area: "300평", name: "*서아", amount: "1억 5천" },
+        { location: "울산 남구", area: "220평", name: "*도윤", amount: "1억 2천" },
+        { location: "세종특별자치시", area: "170평", name: "*지우", amount: "9,200만원" },
+        { location: "제주 서귀포시", area: "240평", name: "*하늘", amount: "1억 2천" }
     ];
 
     const approvalList = document.getElementById('approval-list');
     let approvalIndex = 0;
-    const maxVisibleItems = 6; // Max items to keep in the list
+    const maxVisibleItems = 5; // Show more items
 
     // Populate initial items
     function initializeApprovalList() {
         // Clear any existing items to avoid duplicates on re-run
         approvalList.innerHTML = '';
         for (let i = 0; i < maxVisibleItems; i++) {
+            const item = approvalData[(approvalIndex + i) % approvalData.length];
             const listItem = document.createElement('li');
-            listItem.textContent = approvalData[(approvalIndex + i) % approvalData.length];
+            listItem.innerHTML = `
+                <div class="approval-item">
+                    <div>${item.location} ${item.area} ${item.name} <strong>${item.amount}</strong></div>
+                </div>
+            `;
             approvalList.appendChild(listItem);
         }
         approvalIndex = (approvalIndex + maxVisibleItems) % approvalData.length; // Update index
@@ -781,7 +1421,7 @@
         const itemFullHeight = firstItem.offsetHeight;
 
         // Apply smooth scroll upwards
-        approvalList.style.transition = `transform 1s linear`;
+        approvalList.style.transition = `transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)`;
         approvalList.style.transform = `translateY(-${itemFullHeight}px)`;
 
         // After the scroll animation, reset and move the first item to the end
@@ -792,13 +1432,20 @@
 
             // Move the first item to the end and update its content
             approvalList.appendChild(firstItem);
-            firstItem.textContent = approvalData[approvalIndex % approvalData.length];
+
+            // Create new content for the moved item
+            const item = approvalData[approvalIndex % approvalData.length];
+            firstItem.innerHTML = `
+                <div class="approval-item">
+                    <div>${item.location} ${item.area} ${item.name} <strong style="color: var(--accent);">${item.amount}</strong></div>
+                </div>
+            `;
             approvalIndex++;
-        }, 1000); // Match transition duration (1s)
+        }, 800); // Match transition duration
     }
 
     initializeApprovalList();
-    setInterval(smoothScrollApproval, 1500); // Every 1.5 seconds, start new scroll
+    setInterval(smoothScrollApproval, 2000); // Every 2 seconds, start new scroll
   </script>
 </body>
 </html>
